@@ -5,3 +5,17 @@ dependencies {
     compile project(":components:projects")
     compile project(":components:users")
 }
+
+bootRun.environment([
+        "MANAGEMENT_ENDPOINT_HEALTH_SHOWDETAILS": "always",
+        "management.health.circuitbreakers.enabled": "true",
+        "management.health.hystrix.enabled": "false",
+        "MANAGEMENT.ENDPOINTS.WEB.EXPOSURE.INCLUDE": "info,health,metrics,circuitbreakers"
+])
+
+test.environment([
+        "MANAGEMENT_ENDPOINT_HEALTH_SHOWDETAILS": "always",
+        "management.health.circuitbreakers.enabled": "true",
+        "management.health.hystrix.enabled": "false",
+        "MANAGEMENT.ENDPOINTS.WEB.EXPOSURE.INCLUDE": "info,health,metrics,circuitbreakers"
+])
